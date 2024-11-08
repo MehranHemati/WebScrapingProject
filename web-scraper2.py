@@ -2,9 +2,9 @@ import httpx
 from bs4 import BeautifulSoup
 
 
-url = 'https://www.mobileshop.eu/ios-os/'
+url = 'https://www.mobileshop.eu/ios-os/' #it can be any web site as it would need changes in some lines, I chose this website just for an example.
 headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36"
+    "User-Agent": "search [ my user agent ] in google and paste it here"
 }
 
 def extract_phones_data(phone):
@@ -18,7 +18,6 @@ def extract_phones_data(phone):
         print(e)
 
 
-
 def main():
     response = httpx.get(url, headers=headers)
     response_html = response.text
@@ -26,8 +25,6 @@ def main():
     phones = soup.find('div', class_="products-list")
     for phone in phones:
         extract_phones_data(phone)
-
-
 
 
 if __name__ == '__main__':
